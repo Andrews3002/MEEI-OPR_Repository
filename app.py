@@ -16,7 +16,7 @@ def create_app():
   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
   app.config['TEMPLATES_AUTO_RELOAD'] = True
   app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
-  app.config['DEBUG'] = True
+  app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'false').lower() == 'true'
   app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
   app.config['PREFERRED_URL_SCHEME'] = os.getenv('PREFERRED_URL_SCHEME')
   app.config['JWT_ACCESS_COOKIE_NAME'] = os.getenv('JWT_ACCESS_COOKIE_NAME')
@@ -28,7 +28,7 @@ def create_app():
   app.config["JWT_COOKIE_CSRF_PROTECT"] = False
   app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     "pool_pre_ping": True,
-    "pool_recycle": 1,
+    "pool_recycle": 1800,
   }
   
   db.init_app(app)
