@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}MEEI Procurement Database{% endblock %}
+{% block title %}MEEI-OPR Repository{% endblock %}
 {% block page %}{{lineName}}{% endblock %}
 
 {% block link%}
@@ -43,8 +43,7 @@
                   <form action="/favorites-update/{{company.name}}" method="POST" id="favorite-form-{{ 
                     company.name }}">
 
-                    <input type="checkbox" name="mycheckbox" onchange="updateFavorite('{{ 
-                    company.name }}')" class="checkbox" {{"checked" if company.fav == "1" else 
+                    <input type="checkbox" name="mycheckbox" onchange="updateFavorite('{{ company.name }}')" class="checkbox" {{"checked" if company.fav == "1" else 
                     "unchecked"}}/>
 
                   </form>
